@@ -1,0 +1,23 @@
+#ターゲット名:	依存関係ファイル
+#				コマンド
+
+CC=gcc
+CFLAG=-g -Wall
+#OBJGROUP=main.o libTest.o libTestShared.so.1.0.1
+
+all	:			testNoSharedlib
+testNoSharedlib:	main.o libTest.o libTestNoShared.o
+					$(CC) $(CFLAG) main.o libTest.o libTestNoShared.o -lpthread -o testNoSharedlib
+
+main.o:	main.cpp
+			$(CC) $(CFLAG) -c main.cpp
+
+libTest.o:	libTest.cpp libTest.h
+			$(CC) $(CFLAG) -c libTest.cpp
+
+libTestNoShared.o:	libTestShared.cpp libTestShared.h
+					$(CC) $(CFLAG) -c libTestShared.cpp -o libTestNoShared.o
+
+clean:
+	@\rm -f *.o
+
