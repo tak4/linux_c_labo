@@ -1,0 +1,87 @@
+Temporary breakpoint 1 at 0x80485d8: file astall.c, line 38.
+[Thread debugging using libthread_db enabled]
+
+Temporary breakpoint 1, main () at astall.c:38
+38		pthread_create(&tid, NULL, thr, NULL);
+Breakpoint 2 at 0x69bf30
+Breakpoint 3 at 0x69d6d0
+
+Breakpoint 2, 0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#0  0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#1  0x0061e2d4 in _dl_addr () from /lib/libc.so.6
+#2  0x00579611 in ptmalloc_init () from /lib/libc.so.6
+#3  0x0057a34c in malloc_hook_ini () from /lib/libc.so.6
+#4  0x0057b31d in calloc () from /lib/libc.so.6
+#5  0x004f830c in _dl_allocate_tls () from /lib/ld-linux.so.2
+#6  0x0069a50b in pthread_create@@GLIBC_2.1 () from /lib/libpthread.so.0
+#7  0x080485fc in main () at astall.c:38
+
+Breakpoint 3, 0x0069d6d0 in pthread_mutex_unlock () from /lib/libpthread.so.0
+#0  0x0069d6d0 in pthread_mutex_unlock () from /lib/libpthread.so.0
+#1  0x0061e4f9 in _dl_addr () from /lib/libc.so.6
+#2  0x00579611 in ptmalloc_init () from /lib/libc.so.6
+#3  0x0057a34c in malloc_hook_ini () from /lib/libc.so.6
+#4  0x0057b31d in calloc () from /lib/libc.so.6
+#5  0x004f830c in _dl_allocate_tls () from /lib/ld-linux.so.2
+#6  0x0069a50b in pthread_create@@GLIBC_2.1 () from /lib/libpthread.so.0
+#7  0x080485fc in main () at astall.c:38
+[New Thread 0xb7fe9b70 (LWP 4067)]
+[Switching to Thread 0xb7fe9b70 (LWP 4067)]
+
+Breakpoint 2, 0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#0  0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#1  0x08048580 in thr (arg=0x0) at astall.c:19
+#2  0x00699e99 in start_thread () from /lib/libpthread.so.0
+#3  0x005dfd2e in clone () from /lib/libc.so.6
+
+Breakpoint 3, 0x0069d6d0 in pthread_mutex_unlock () from /lib/libpthread.so.0
+#0  0x0069d6d0 in pthread_mutex_unlock () from /lib/libpthread.so.0
+#1  0x080485aa in thr (arg=0x0) at astall.c:28
+#2  0x00699e99 in start_thread () from /lib/libpthread.so.0
+#3  0x005dfd2e in clone () from /lib/libc.so.6
+
+Breakpoint 2, 0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#0  0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#1  0x08048580 in thr (arg=0x0) at astall.c:19
+#2  0x00699e99 in start_thread () from /lib/libpthread.so.0
+#3  0x005dfd2e in clone () from /lib/libc.so.6
+
+Breakpoint 3, 0x0069d6d0 in pthread_mutex_unlock () from /lib/libpthread.so.0
+#0  0x0069d6d0 in pthread_mutex_unlock () from /lib/libpthread.so.0
+#1  0x080485aa in thr (arg=0x0) at astall.c:28
+#2  0x00699e99 in start_thread () from /lib/libpthread.so.0
+#3  0x005dfd2e in clone () from /lib/libc.so.6
+
+Breakpoint 2, 0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#0  0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#1  0x08048580 in thr (arg=0x0) at astall.c:19
+#2  0x00699e99 in start_thread () from /lib/libpthread.so.0
+#3  0x005dfd2e in clone () from /lib/libc.so.6
+
+Breakpoint 3, 0x0069d6d0 in pthread_mutex_unlock () from /lib/libpthread.so.0
+#0  0x0069d6d0 in pthread_mutex_unlock () from /lib/libpthread.so.0
+#1  0x080485aa in thr (arg=0x0) at astall.c:28
+#2  0x00699e99 in start_thread () from /lib/libpthread.so.0
+#3  0x005dfd2e in clone () from /lib/libc.so.6
+
+Breakpoint 2, 0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#0  0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#1  0x08048580 in thr (arg=0x0) at astall.c:19
+#2  0x00699e99 in start_thread () from /lib/libpthread.so.0
+#3  0x005dfd2e in clone () from /lib/libc.so.6
+
+Breakpoint 2, 0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#0  0x0069bf30 in pthread_mutex_lock () from /lib/libpthread.so.0
+#1  0x08048556 in cnt_reset () at astall.c:11
+#2  0x0804858f in thr (arg=0x0) at astall.c:22
+#3  0x00699e99 in start_thread () from /lib/libpthread.so.0
+#4  0x005dfd2e in clone () from /lib/libc.so.6
+
+Program received signal SIGINT, Interrupt.
+[Switching to Thread 0xb7fea6c0 (LWP 4064)]
+0x00110416 in __kernel_vsyscall ()
+A debugging session is active.
+
+	Inferior 1 [process 4064] will be killed.
+
+Quit anyway? (y or n) [answered Y; input not from terminal]

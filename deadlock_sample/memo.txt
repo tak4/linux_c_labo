@@ -1,0 +1,24 @@
+デッドロックのサンプル
+
+astall
+はデッドロックするプログラム
+
+調査方法として以下
+-L はスレッドを表示
+ps ax -L | grep astall
+
+状態がSなのでデッドロックが疑われる
+
+
+gdb -p `pidof astall`
+
+gdb
+i thr
+でthreadの状態が確認出来る
+thr 2
+でthreadを切り替えることが可能
+
+
+デバッグ方法として以下がある
+gdb astall -x debug.cmd
+
