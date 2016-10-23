@@ -1,31 +1,31 @@
 //
-// ���͕s�����R�[�h�f�[�^���쐬����
-// ���̓t�@�C���Ƃ���1�s��1������ASCII�f�[�^���K�v
-// ASCII�R�[�h�ŏ����ꂽ16�i�f�[�^���o�C�i���f�[�^(HEX)�ɕϊ�����
-// ��)
+// 入力不可文字コードデータを作成する
+// 入力ファイルとして1行に1文字のASCIIデータが必要
+// ASCIIコードで書かれた16進データをバイナリデータ(HEX)に変換する
+// 例)
 //    ASCII                     -> BINARY
 //    8140(0x38,0x31,0x34,0x30) -> 0x8140
 //    8141(0x38,0x31,0x34,0x31) -> 0x8141
-// �ϊ������f�[�^�́A�w�茅�����܂ł�1�s�Ƃ��ĉ��s����
+// 変換したデータは、指定桁数分までを1行として改行する
 //
 #include <stdio.h>
 #include <stdlib.h>
 
 int main( int argc, char *argv[] )
 {
-	FILE *in_fp;			// ���̓t�@�C�� (ASCII�R�[�h)
-	FILE *out_fp;			// �o�̓t�@�C�� (�o�C�i���f�[�^)
-	char buf[16] = { 0 };	// ���̓t�@�C���ǂݍ��݃o�b�t�@
+	FILE *in_fp;			// 入力ファイル (ASCIIコード)
+	FILE *out_fp;			// 出力ファイル (バイナリデータ)
+	char buf[16] = { 0 };	// 入力ファイル読み込みバッファ
 	int line = 0;
-	int num_of_char = 32;	// 1�s�̕�����
+	int num_of_char = 32;	// 1行の文字数
 
-	// �����̐����`�F�b�N
+	// 引数の数をチェック
 	if( ( argc <= 2 ) || ( argc >= 5 ) ) {
 		printf("Usage: %s INPUTFILE OUTPUTFILE [NUMBER_OF_CHARACTERS]\n", argv[0]);
 		return -1;
 	}
 
-	// 1�s�̕��������擾
+	// 1行の文字数を取得
 	if( argc == 4 ) {
 		num_of_char = atoi(argv[3]);
 		if( num_of_char == 0 ) {
@@ -34,7 +34,7 @@ int main( int argc, char *argv[] )
 	}
 
 	//
-	// ���o�̓t�@�C���I�[�v��
+	// 入出力ファイルオープン
 	//
 	if( ( in_fp = fopen( argv[1], "r" ) ) == NULL ) {
 		printf(" file open error :%s\n", argv[1]);
@@ -47,17 +47,17 @@ int main( int argc, char *argv[] )
 	}
 
 	//
-	// �ϊ�����
+	// 変換処理
 	//
 	unsigned char writedata = 0x00;
-	// �P�s�Âǂݍ���
+	// １行づつ読み込み
 	while( fgets( buf, sizeof(buf), in_fp) != NULL ) {
 		line++;
-		// �P���Â`�F�b�N
+		// １桁づつチェック
 		for( int col = 0; buf[col] != '\0'; col++ ) {
 			unsigned char workdata = 0x00;
 			if( ( buf[col] == 0x0d ) || ( buf[col] == 0x0a ) ) {
-				// ���s�R�[�h�͖���
+				// 改行コードは無視
 				continue;
 			}
 			else if( ( buf[col] >= '0' ) && ( buf[col] <= '9' ) ) {
@@ -74,7 +74,7 @@ int main( int argc, char *argv[] )
 				break;
 			}
 
-			// 1byte�f�[�^���쐬���A1byte�����΃t�@�C����������
+			// 1byteデータを作成し、1byte揃えばファイル書き込み
 			if( ( col % 2 ) == 0 ) {
 				writedata = ( workdata << 4 );
 			}
@@ -86,20 +86,20 @@ int main( int argc, char *argv[] )
 		}
 
 		if( ( line % num_of_char ) == 0 ) {
-			// �w�蕶�����ŉ��s
+			// 指定文字数で改行
 			writedata = '\n';
 			fputc(writedata, out_fp);
 			printf("\n");
 		}
 	}
 
-	// �ŏI�s �w�蕶�����ɂ݂��Ȃ��ꍇ�����s
+	// 最終行 指定文字数にみたない場合も改行
 	writedata = '\n';
 	fputc(writedata, out_fp);
 	printf("\n");
 
 	//
-	// ���o�̓t�@�C���I�[�v��
+	// 入出力ファイルオープン
 	//
 	fclose(in_fp);
 	fclose(out_fp);
