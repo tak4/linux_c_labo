@@ -38,3 +38,43 @@ set {int}($arg0+$i) = $arg1
 set $i = $i + 1
 end
 end
+
+define modec
+set follow-fork child
+show follow-fork
+end
+
+define subb
+b fork_test.c:68
+r
+set breakpoint pending on
+b subprocess
+set breakpoint pending off
+set follow-fork child
+c
+end
+
+# 引数表示
+# info args
+# show args
+
+# ローカル変数表示
+# info local
+
+# breakpointを30回無視
+# ignore 3 30
+
+# 関数表示
+# help function
+
+# 文字列比較
+# p $_streq(bufc, "TEST")
+# b if $_streq(bufc, "TEST")
+
+# breakpoint有効/無効化
+# disable br 1
+# enable br 1
+
+# 未知のシンボルへのbreakpoint設定
+# set breakpoint pending on
+# set breakpoint pending off
