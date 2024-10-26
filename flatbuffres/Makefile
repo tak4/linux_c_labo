@@ -20,6 +20,6 @@ deserialize.o:	deserialize.cpp
 
 .PHONY : clean
 clean:
-# @\はコンソルに表示しない為の指示
+# @はコンソールに表示しない為の指示
 	@rm -f *.o
 

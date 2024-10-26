@@ -13,5 +13,5 @@ asc2bin.o:	asc2bin.cpp
 			$(CC) $(CFLAG) -c asc2bin.cpp
 
 clean:
-	@\rm -f *.o
-
+# @はコンソールに表示しない為の指示
+	@rm -f *.o

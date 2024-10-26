@@ -14,4 +14,5 @@ get_cmd_name.o:	get_cmd_name.c
 			$(CC) $(CFLAG) -c get_cmd_name.c
 
 clean:
-	@\rm -f *.o
+# @はコンソールに表示しない為の指示
+	@rm -f *.o

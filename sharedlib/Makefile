@@ -24,5 +24,6 @@ libTestShared.so.1.0.1:	libTestShared.o
 
 
 clean:
-	@\rm -f *.o
+# @はコンソールに表示しない為の指示
+	@rm -f *.o
 

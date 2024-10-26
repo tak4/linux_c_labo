@@ -13,4 +13,5 @@ dynamic_array.o:	dynamic_array.cpp
 			$(CC) $(CFLAG) -c dynamic_array.cpp
 
 clean:
-	@\rm -f *.o
+# @はコンソールに表示しない為の指示
+	@rm -f *.o

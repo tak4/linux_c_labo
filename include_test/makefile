@@ -10,4 +10,5 @@ include_test.o:	include_test.c
 			$(CC) $(CFLAG) -c include_test.c
 
 clean:
-	@\rm -f *.o
+# @はコンソールに表示しない為の指示
+	@rm -f *.o

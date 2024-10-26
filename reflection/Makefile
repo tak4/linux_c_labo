@@ -13,5 +13,6 @@ reflection.o:	reflection.cpp
 			$(CC) $(CFLAG) -c reflection.cpp
 
 clean:
-	@\rm -f *.o
+# @はコンソールに表示しない為の指示
+	@rm -f *.o
 

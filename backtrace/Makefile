@@ -14,6 +14,6 @@ backtrace.o:	backtrace.cpp
 
 .PHONY : clean
 clean:
-# @\はコンソールに表示しない為の指示
+# @はコンソールに表示しない為の指示
 	@rm -f *.o
 

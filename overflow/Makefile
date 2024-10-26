@@ -16,5 +16,6 @@ _strtol.o:	_strtol.h _strtol.cpp
 			$(CC) $(CFLAG) -c _strtol.cpp
 	
 clean:
-	@\rm -f *.o
+# @はコンソールに表示しない為の指示
+	@rm -f *.o
 
