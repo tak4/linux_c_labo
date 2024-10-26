@@ -1,0 +1,8 @@
+namespace Sample;
+
+table TopTable {
+    f_val:float;
+    d_val:double;
+}
+
+root_type TopTable;
