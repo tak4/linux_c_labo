@@ -29,7 +29,7 @@ In file included from /home/takashi/develop/flatbuffers/include/flatbuffers/flat
            verifier.EndTable();
   }
 
-## 修正跡
+## 修正後
   bool Verify(flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyField<float>(verifier, VT_F_VAL, sizeof(float)) &&
